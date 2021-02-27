@@ -28,7 +28,7 @@ if __name__ == '__main__':
     mode = os.fstat(0).st_mode
     for line in sys.stdin:
              line = line.replace('\n','')
-             header = struct.pack("HBBII", 0xC356,1,1,seq_num, 0)
+             header = struct.pack("!HBBII", 0xC356,1,1,seq_num, 0)
              complete_message = header + line.encode("utf-8")
 
              local_socket.sendto(complete_message, (remoteip, remoteport))

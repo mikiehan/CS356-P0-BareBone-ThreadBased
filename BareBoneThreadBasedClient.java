@@ -47,6 +47,11 @@ public class BareBoneThreadBasedClient {
             }
         }
         serverSocketAddress = new InetSocketAddress(serverAddr, serverPort);
+        try {
+            socket = new DatagramSocket(serverSocketAddress);
+        } catch (SocketException e) {
+            e.printStackTrace();
+        }
     }
 
     private static void listenToNetwork() {
